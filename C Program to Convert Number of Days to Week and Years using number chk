@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+#define MAXINPUT 100
+
+void main()
+{
+	int day=0,week,year;
+	
+	char input[MAXINPUT] = "";
+    int length,i; 
+    printf("Enter Number of Day:");
+    scanf ("%s", input);
+    length = strlen (input);
+    for (i=0;i<length; i++)
+	{
+	
+        if (!isdigit(input[i]))
+        {
+            printf ("Given input is not a number\n");
+            exit(1);
+       }
+   }
+    for (i=0;i<length; i++)
+	{
+	
+	day=(day*10)+(input[i]-'0');
+    
+        
+   }
+       year=day/365;
+		week=day/7;
+		int days=day-(week*7);
+		printf("Years:%d",year);
+		printf("Weeks:%d",week);
+		printf("Days:%d",days);
+	
+	
+
+	
+}
