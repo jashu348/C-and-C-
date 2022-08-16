@@ -1,0 +1,116 @@
+#include <stdio.h>
+
+int n ,A[20] ;
+void display(int n , int A[]){
+    
+    for(int i = 0;i<n;i++){
+        printf("%d\n",A[i]);
+    }
+}
+int insert_at_end(int n , int A[]){
+    int new;
+    printf("Enter the new element ");
+    scanf("%d",&new);
+    n = n +1;
+    A[n-1]=new;
+  return n;
+}
+int insert_at_pos(int n, int A[]){
+    int pos;
+    int new;
+    printf("Enter the position");
+    scanf("%d",&pos);
+    printf("Enter the new elements");
+    scanf("%d",&new);
+    n = n+1;
+    for(int i = n - 2 ; i >=pos-1 ; i--){
+        A[i+1]= A[i];
+    }
+    A[pos - 1]= new;
+    if(n>pos)
+   return n;
+   else
+   return pos;
+}
+
+int delete_value (int n , int A[]){
+    int val;
+    printf("Enter the value");
+    scanf("%d",&val);
+    int pos;
+    
+    for(int i = 0 ; i<n ; i++){
+       if( A[i]==val){
+        pos = i ;
+    }
+    }
+    for (int i = pos ; i<n ; i++){
+        A[i]=A[i+1];
+    }
+    n = n-1;
+    
+    return n;
+}
+int delete_position(int n , int A[]){
+   int pos;
+   printf("Enter the position");
+   scanf("%d",&pos);
+   for (int i = pos-1;i<n;i++){
+       A[i]=A[i+1];
+   }
+   n = n-1;
+   return n;
+}
+
+void find_location(int n , int A[]){
+    int value;
+    printf("Enter element");
+    scanf("%d",&value);
+    for(int i = 0; i<n;i++){
+        if (value == A[i]){
+            printf("%d",i+1);
+        }
+    }
+    
+}
+
+int main(){
+int ch ;
+printf("Enter the size of the array");
+scanf("%d",&n);
+printf("Enter the elements of the array");
+for (int a = 0 ; a<n ; a++){
+    scanf("%d",&A[a]);
+}
+while (1)  {
+    
+    printf("\n1.Insert at the end");
+    printf("\n2.Insert at the position");
+    printf("\n3.Delete as value is given");
+    printf("\n4.Delete as postion is gven");
+    printf("\n5.Location of the element ");
+    printf("\n6.Display the elements");
+    printf ("\n Enter your choice ");
+    scanf("%d", &ch);
+    
+    switch (ch){
+        case 1 : n=insert_at_end(n,A);
+        break;
+        case 2 : n=insert_at_pos(n,A);
+        break;
+         case 3 :n= delete_value(n,A);
+         break;
+         case 4 : n=delete_position(n,A);
+        break;
+         case 5 : find_location(n,A);
+         break;
+         case 6 : display(n,A);
+         break;
+        default :
+        printf("You entered wrong choice !! Choose again");
+    }
+   
+} 
+
+    return 0;
+}
